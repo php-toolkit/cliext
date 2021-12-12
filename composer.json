@@ -1,9 +1,9 @@
 {
-  "name": "inherelab/php-pkg-template",
-  "description": "TODO: package description",
+  "name": "toolkit/cliext",
+  "description": "Cli ext library of PHP",
   "type": "library",
   "license": "MIT",
-  "homepage": "https://github.com/inherelab/php-pkg-template",
+  "homepage": "https://github.com/toolkit/cliext",
   "keywords": [
     "library",
     "tool"
@@ -15,18 +15,18 @@
     }
   ],
   "require": {
-    "php": ">7.4.0",
+    "php": ">8.0.0",
     "ext-mbstring": "*",
-    "toolkit/stdlib":"~1.0"
+    "toolkit/stdlib":"~2.0"
   },
   "autoload": {
     "psr-4": {
-      "InhereLab\\DemoPkg\\": "src/"
+      "Toolkit\\CliExt\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "InhereLab\\DemoPkgTest\\": "test/"
+      "Toolkit\\CliExtTest\\": "test/"
     }
   },
   "bin": [
