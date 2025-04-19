@@ -47,25 +47,11 @@ jobs:
           echo "release tag: ${tag1}"
           composer update --no-progress
 
-      # more see https://github.com/inhere/kite
-      - name: Generate changelog file
-        id: changelog
+      - name: Generate changelog
         run: |
-          wget -c -q https://github.com/inhere/kite/releases/latest/download/kite.phar
-          php kite.phar git cl prev last --style gh-release --no-merges --fetch-tags --unshallow --file changelog.md
-          cat changelog.md
-
-      # https://github.com/meeDamian/github-release
-#      - name: Create release and upload assets
-#        uses: meeDamian/github-release@2.0
-#        with:
-#          gzip: false
-#          token: ${{ secrets.GITHUB_TOKEN }}
-#          tag: ${{ env.RELEASE_TAG }}
-#          name: ${{ env.RELEASE_TAG }}
-#          body: |
-#              ${{ steps.changelog.outputs.CHLOGBODY }}
-#          files: kite-${{ env.RELEASE_TAG }}.phar
+          curl https://github.com/gookit/gitw/releases/latest/download/chlog-linux-amd64 -L -o /usr/local/bin/chlog
+          chmod a+x /usr/local/bin/chlog
+          chlog -c .github/changelog.yml -o changelog.md prev last 
 
       # https://github.com/softprops/action-gh-release
       - name: Create release and upload assets
